@@ -40,7 +40,7 @@ export default function MovieRow({ title, icon: Icon, fetchFn, showRank = false 
       {/* Row header */}
       <div className="flex items-center justify-between mb-4">
         <div>
-          <h2 className="row-title text-xl md:text-2xl font-black text-white tracking-tight flex items-center gap-4">
+          <h2 className="row-title text-xl md:text-2xl font-black text-white tracking-tight flex items-center gap-3">
             {Icon && <Interactive3DIcon icon={Icon} color="#E50914" />}
             {title}
           </h2>

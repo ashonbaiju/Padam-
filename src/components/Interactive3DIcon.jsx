@@ -14,9 +14,8 @@ export default function Interactive3DIcon({ icon: Icon, color = '#E50914' }) {
     const centerX = rect.width / 2;
     const centerY = rect.height / 2;
     
-    // Max rotation 35 degrees for extreme 3D effect
-    const rotateX = ((y - centerY) / centerY) * -35; 
-    const rotateY = ((x - centerX) / centerX) * 35;
+    const rotateX = ((y - centerY) / centerY) * -40; 
+    const rotateY = ((x - centerX) / centerX) * 40;
 
     setRotation({ x: rotateX, y: rotateY });
   };
@@ -28,69 +27,45 @@ export default function Interactive3DIcon({ icon: Icon, color = '#E50914' }) {
 
   return (
     <div 
-      className="relative w-12 h-12 shrink-0 cursor-pointer"
-      style={{ perspective: '1000px' }}
+      className="relative w-8 h-8 md:w-10 md:h-10 shrink-0 cursor-pointer flex items-center justify-center"
+      style={{ perspective: '800px' }}
       onMouseMove={handleMouseMove}
       onMouseEnter={() => setIsHovered(true)}
       onMouseLeave={handleMouseLeave}
     >
-      {/* 3D Object Container */}
       <div 
         ref={ref}
-        className={`w-full h-full absolute inset-0 ${!isHovered ? 'animate-float-3d' : ''}`}
+        className={`w-full h-full absolute inset-0 flex items-center justify-center ${!isHovered ? 'animate-float-3d' : ''}`}
         style={{
           transformStyle: 'preserve-3d',
           transition: isHovered ? 'transform 0.1s ease-out' : 'transform 0.5s ease-in-out',
           transform: isHovered 
-            ? `rotateX(${rotation.x}deg) rotateY(${rotation.y}deg) scale(1.15)` 
+            ? `rotateX(${rotation.x}deg) rotateY(${rotation.y}deg) scale(1.2)` 
             : 'rotateX(0deg) rotateY(0deg) scale(1)'
         }}
       >
-        {/* Back / Shadow Layer */}
+        {/* Soft back glow */}
         <div 
-          className="absolute inset-0 rounded-2xl"
+          className="absolute inset-0 rounded-full"
           style={{
-            background: 'rgba(0,0,0,0.8)',
-            transform: 'translateZ(-15px)',
-            filter: 'blur(10px)',
-            opacity: isHovered ? 0.8 : 0.4,
+            background: color,
+            transform: 'translateZ(-5px)',
+            filter: 'blur(12px)',
+            opacity: isHovered ? 0.6 : 0.2,
             transition: 'opacity 0.3s'
           }}
         />
 
-        {/* 3D Glass Cube Base */}
-        <div 
-          className="absolute inset-0 rounded-2xl border overflow-hidden backdrop-blur-xl"
-          style={{
-            background: `linear-gradient(135deg, rgba(255,255,255,0.15) 0%, rgba(255,255,255,0.02) 100%)`,
-            borderColor: `rgba(255,255,255,0.2)`,
-            transform: 'translateZ(0px)',
-            boxShadow: isHovered 
-              ? `inset 0 0 20px ${color}40, 0 20px 40px -10px ${color}80` 
-              : `inset 0 0 10px rgba(255,255,255,0.05), 0 10px 20px -5px rgba(0,0,0,0.5)`,
-            transition: 'box-shadow 0.3s ease-out'
-          }}
-        >
-          {/* Light reflection */}
-          <div 
-            className="absolute inset-0 bg-gradient-to-br from-white/40 to-transparent opacity-50"
-            style={{ transform: 'translateZ(1px)' }}
-          />
-        </div>
-
-        {/* Floating Animated Icon (pops out in Z-axis) */}
+        {/* Floating Animated Icon */}
         <div 
           className="absolute inset-0 flex items-center justify-center pointer-events-none"
           style={{ 
-            transform: 'translateZ(30px)', // Pops out 30px towards the screen!
-            filter: isHovered ? `drop-shadow(0 15px 15px rgba(0,0,0,0.6))` : 'drop-shadow(0 5px 5px rgba(0,0,0,0.5))',
+            transform: 'translateZ(15px)',
+            filter: isHovered ? `drop-shadow(0 10px 10px rgba(0,0,0,0.8))` : 'drop-shadow(0 4px 4px rgba(0,0,0,0.6))',
             transition: 'filter 0.3s ease-out'
           }}
         >
-          {/* Render the highly animated SVG here */}
-          <div style={{ transform: isHovered ? 'scale(1.2)' : 'scale(1)', transition: 'transform 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275)' }}>
-            <Icon color={color} />
-          </div>
+          <Icon color={color} />
         </div>
       </div>
     </div>
