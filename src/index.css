@@ -1,0 +1,249 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+* { margin: 0; padding: 0; box-sizing: border-box; }
+
+:root {
+  --red: #E50914;
+  --dark-red: #B20710;
+  --black: #0a0a0a;
+  --dark: #141414;
+  --card-bg: #1a1a1a;
+  --gold: #f5c518;
+}
+
+html { scroll-behavior: smooth; }
+
+body {
+  background: var(--black);
+  color: #fff;
+  font-family: 'Inter', sans-serif;
+  overflow-x: hidden;
+}
+
+/* ── Scrollbar ── */
+::-webkit-scrollbar { width: 5px; }
+::-webkit-scrollbar-track { background: #111; }
+::-webkit-scrollbar-thumb { background: var(--red); border-radius: 3px; }
+::-webkit-scrollbar-thumb:hover { background: var(--dark-red); }
+
+.scrollbar-hide { -ms-overflow-style: none; scrollbar-width: none; }
+.scrollbar-hide::-webkit-scrollbar { display: none; }
+
+/* ── Logo ── */
+.padam-logo {
+  font-family: 'Inter', sans-serif;
+  font-weight: 900;
+  font-size: 26px;
+  color: var(--red);
+  letter-spacing: -0.5px;
+  cursor: pointer;
+  text-transform: uppercase;
+}
+
+/* ── Gradients ── */
+.hero-gradient {
+  background:
+    linear-gradient(77deg, rgba(0,0,0,0.9) 0%, rgba(0,0,0,0) 60%),
+    linear-gradient(to top, #0a0a0a 0%, rgba(0,0,0,0.4) 30%, transparent 60%);
+}
+
+.row-fade-left  { background: linear-gradient(to right, var(--dark) 0%, transparent 100%); }
+.row-fade-right { background: linear-gradient(to left, var(--dark) 0%, transparent 100%); }
+
+/* ── Nav ── */
+.nav-gradient { background: linear-gradient(to bottom, rgba(0,0,0,0.85) 0%, transparent 100%); }
+.nav-solid    { background: rgba(10,10,10,0.97); backdrop-filter: blur(10px); }
+
+/* ── Glass ── */
+.glass {
+  background: rgba(18,18,18,0.92);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid rgba(255,255,255,0.07);
+}
+
+/* ── Buttons ── */
+.btn-play {
+  background: #fff;
+  color: #000;
+  font-weight: 700;
+  transition: background 0.2s, transform 0.15s;
+}
+.btn-play:hover { background: rgba(255,255,255,0.8); transform: scale(1.04); }
+
+.btn-info {
+  background: rgba(109,109,110,0.65);
+  color: #fff;
+  font-weight: 600;
+  transition: background 0.2s, transform 0.15s;
+}
+.btn-info:hover { background: rgba(109,109,110,0.4); transform: scale(1.04); }
+
+.btn-red {
+  background: var(--red);
+  color: #fff;
+  font-weight: 700;
+  transition: background 0.2s, transform 0.15s;
+}
+.btn-red:hover { background: var(--dark-red); transform: scale(1.04); }
+
+.btn-icon {
+  border: 2px solid rgba(255,255,255,0.5);
+  color: #fff;
+  transition: border-color 0.2s, background 0.2s;
+}
+.btn-icon:hover { border-color: #fff; background: rgba(255,255,255,0.1); }
+
+/* ── Maturity Badge ── */
+.maturity-badge {
+  border: 1px solid rgba(255,255,255,0.4);
+  padding: 1px 5px;
+  font-size: 11px;
+  border-radius: 2px;
+}
+
+/* ── Rating Badge (TMDB/IMDB gold) ── */
+.rating-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  background: rgba(245,197,24,0.15);
+  border: 1px solid rgba(245,197,24,0.4);
+  color: var(--gold);
+  font-weight: 700;
+  padding: 2px 8px;
+  border-radius: 4px;
+  font-size: 12px;
+}
+
+/* ── Skeleton ── */
+.skeleton {
+  background: linear-gradient(90deg, #1c1c1c 25%, #2a2a2a 50%, #1c1c1c 75%);
+  background-size: 200% 100%;
+  animation: shimmer 1.6s infinite;
+  border-radius: 6px;
+}
+@keyframes shimmer {
+  0%   { background-position: -200% 0; }
+  100% { background-position:  200% 0; }
+}
+
+/* ── Animations ── */
+.animate-fade-in   { animation: fadeIn 0.25s ease-out; }
+.animate-slide-up  { animation: slideUp 0.5s cubic-bezier(0.16,1,0.3,1) both; }
+.animate-scale-in  { animation: scaleIn 0.25s ease-out; }
+.animate-spin-slow { animation: spin 2s linear infinite; }
+
+@keyframes fadeIn  { from { opacity: 0; }                            to { opacity: 1; } }
+@keyframes slideUp { from { opacity: 0; transform: translateY(30px); } to { opacity: 1; transform: translateY(0); } }
+@keyframes scaleIn { from { opacity: 0; transform: scale(0.93); }    to { opacity: 1; transform: scale(1); } }
+@keyframes spin    { to { transform: rotate(360deg); } }
+
+/* ── Movie card ── */
+.movie-card {
+  transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275),
+              box-shadow 0.4s ease,
+              filter 0.3s ease;
+}
+.movie-card:hover {
+  transform: scale(1.12) translateY(-6px);
+  z-index: 30;
+  box-shadow:
+    0 0 0 2px rgba(229,9,20,0.6),
+    0 24px 80px rgba(0,0,0,0.9),
+    0 0 40px rgba(229,9,20,0.15);
+  filter: brightness(1.05);
+}
+
+/* Card info panel slides up */
+.card-info-panel {
+  transform: translateY(100%);
+  opacity: 0;
+  transition: transform 0.35s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.3s ease;
+}
+.movie-card:hover .card-info-panel {
+  transform: translateY(0);
+  opacity: 1;
+}
+
+/* Ripple on card click */
+@keyframes ripple {
+  from { transform: scale(0); opacity: 0.6; }
+  to   { transform: scale(4); opacity: 0; }
+}
+.ripple-effect {
+  position: absolute;
+  border-radius: 50%;
+  width: 60px; height: 60px;
+  background: rgba(229,9,20,0.4);
+  animation: ripple 0.6s ease-out forwards;
+  pointer-events: none;
+  transform-origin: center;
+}
+
+/* Sheen sweep on hover */
+@keyframes sheen {
+  0%   { left: -100%; }
+  100% { left: 200%; }
+}
+.card-sheen::after {
+  content: '';
+  position: absolute;
+  top: 0; bottom: 0;
+  left: -100%;
+  width: 60%;
+  background: linear-gradient(90deg, transparent, rgba(255,255,255,0.08), transparent);
+  animation: sheen 0.7s ease forwards;
+  pointer-events: none;
+}
+
+/* ── Modal ── */
+.modal-overlay { animation: fadeIn 0.2s ease-out; }
+.modal-content { animation: scaleIn 0.25s ease-out; }
+
+/* ── Cast card ── */
+.cast-card { transition: transform 0.2s; }
+.cast-card:hover { transform: translateY(-4px); }
+
+/* ── Progress bar (watch page) ── */
+.progress-bar { height: 3px; background: var(--red); border-radius: 2px; transition: width 0.1s; }
+
+/* ── Input focus ── */
+input:focus { outline: none; }
+
+/* ── Page transitions ── */
+.page-enter { animation: fadeIn 0.3s ease-out; }
+
+/* ── Row title accent ── */
+.row-title {
+  position: relative;
+  display: inline-block;
+}
+.row-title::after {
+  content: '';
+  position: absolute;
+  bottom: -4px;
+  left: 0;
+  width: 30px;
+  height: 3px;
+  background: var(--red);
+  border-radius: 2px;
+  transition: width 0.3s ease;
+}
+.row-title:hover::after { width: 100%; }
+
+/* ── Hero text glow ── */
+.hero-title-glow {
+  text-shadow: 0 0 60px rgba(229,9,20,0.25), 0 4px 20px rgba(0,0,0,0.8);
+}
+
+/* ── Floating badge pulse ── */
+@keyframes pulse-badge {
+  0%, 100% { box-shadow: 0 0 0 0 rgba(229,9,20,0.5); }
+  50%       { box-shadow: 0 0 0 6px rgba(229,9,20,0); }
+}
+.badge-pulse { animation: pulse-badge 2s infinite; }
