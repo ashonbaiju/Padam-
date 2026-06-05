@@ -5,7 +5,7 @@ import react from '@vitejs/plugin-react'
 export default defineConfig({
   plugins: [react()],
   // When building for XAMPP, set base to the subfolder name
-  base: '/',
+  base: '/Padam-/',
   server: {
     host: '0.0.0.0',
     proxy: {
