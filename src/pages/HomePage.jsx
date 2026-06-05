@@ -5,19 +5,24 @@ import Footer from '../components/Footer';
 import MovieModal from '../components/MovieModal';
 import { tmdb, GENRE_IDS } from '../services/tmdb';
 
+import { 
+  TrendingUp, Film, Star, Rocket, Swords, 
+  Smile, Ghost, Orbit, Heart, Drama, Search, Palette 
+} from 'lucide-react';
+
 const ROWS = [
-  { title: '🔥 Trending This Week',     fetchFn: () => tmdb.trending(),              showRank: true  },
-  { title: '🎬 Now Playing',            fetchFn: () => tmdb.nowPlaying()                              },
-  { title: '⭐ Top Rated All Time',     fetchFn: () => tmdb.topRated(),              showRank: true  },
-  { title: '🚀 Popular Right Now',      fetchFn: () => tmdb.popular()                                },
-  { title: '💥 Action & Adventure',     fetchFn: () => tmdb.byGenre(GENRE_IDS.Action)               },
-  { title: '😂 Comedy',                 fetchFn: () => tmdb.byGenre(GENRE_IDS.Comedy)               },
-  { title: '👻 Horror',                 fetchFn: () => tmdb.byGenre(GENRE_IDS.Horror)               },
-  { title: '🚀 Sci-Fi',                 fetchFn: () => tmdb.byGenre(GENRE_IDS['Sci-Fi'])            },
-  { title: '❤️ Romance',               fetchFn: () => tmdb.byGenre(GENRE_IDS.Romance)              },
-  { title: '🎭 Drama',                  fetchFn: () => tmdb.byGenre(GENRE_IDS.Drama)                },
-  { title: '🔍 Thriller',              fetchFn: () => tmdb.byGenre(GENRE_IDS.Thriller)             },
-  { title: '🎨 Animation',             fetchFn: () => tmdb.byGenre(GENRE_IDS.Animation)            },
+  { title: 'Trending This Week',     icon: TrendingUp, fetchFn: () => tmdb.trending(),              showRank: true  },
+  { title: 'Now Playing',            icon: Film,       fetchFn: () => tmdb.nowPlaying()                              },
+  { title: 'Top Rated All Time',     icon: Star,       fetchFn: () => tmdb.topRated(),              showRank: true  },
+  { title: 'Popular Right Now',      icon: Rocket,     fetchFn: () => tmdb.popular()                                },
+  { title: 'Action & Adventure',     icon: Swords,     fetchFn: () => tmdb.byGenre(GENRE_IDS.Action)               },
+  { title: 'Comedy',                 icon: Smile,      fetchFn: () => tmdb.byGenre(GENRE_IDS.Comedy)               },
+  { title: 'Horror',                 icon: Ghost,      fetchFn: () => tmdb.byGenre(GENRE_IDS.Horror)               },
+  { title: 'Sci-Fi',                 icon: Orbit,      fetchFn: () => tmdb.byGenre(GENRE_IDS['Sci-Fi'])            },
+  { title: 'Romance',                icon: Heart,      fetchFn: () => tmdb.byGenre(GENRE_IDS.Romance)              },
+  { title: 'Drama',                  icon: Drama,      fetchFn: () => tmdb.byGenre(GENRE_IDS.Drama)                },
+  { title: 'Thriller',               icon: Search,     fetchFn: () => tmdb.byGenre(GENRE_IDS.Thriller)             },
+  { title: 'Animation',              icon: Palette,    fetchFn: () => tmdb.byGenre(GENRE_IDS.Animation)            },
 ];
 
 export default function HomePage() {
@@ -43,6 +48,7 @@ export default function HomePage() {
             >
               <MovieRow
                 title={row.title}
+                icon={row.icon}
                 fetchFn={row.fetchFn}
                 showRank={row.showRank}
               />
