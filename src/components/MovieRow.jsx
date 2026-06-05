@@ -3,6 +3,8 @@ import { ChevronLeft, ChevronRight } from 'lucide-react';
 import { useNavigate } from 'react-router-dom';
 import MovieCard from './MovieCard';
 
+import Interactive3DIcon from './Interactive3DIcon';
+
 export default function MovieRow({ title, icon: Icon, fetchFn, showRank = false }) {
   const [movies, setMovies] = useState([]);
   const [loading, setLoading] = useState(true);
@@ -38,8 +40,8 @@ export default function MovieRow({ title, icon: Icon, fetchFn, showRank = false 
       {/* Row header */}
       <div className="flex items-center justify-between mb-4">
         <div>
-          <h2 className="row-title text-lg md:text-xl font-black text-white tracking-tight flex items-center gap-2">
-            {Icon && <Icon className="text-[#E50914] animate-float-3d" size={24} strokeWidth={2.5} />}
+          <h2 className="row-title text-xl md:text-2xl font-black text-white tracking-tight flex items-center gap-4">
+            {Icon && <Interactive3DIcon icon={Icon} color="#E50914" />}
             {title}
           </h2>
         </div>
