@@ -78,7 +78,7 @@ export default function Footer() {
         {/* Bottom row */}
         <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-3">
           <p className="text-xs text-white/20">
-            © {new Date().getFullYear()} PADAM. Powered by{' '}
+            © {new Date().getFullYear()} Streamix. Powered by{' '}
             <a
               href="https://www.themoviedb.org"
               target="_blank"

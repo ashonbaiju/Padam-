@@ -83,7 +83,7 @@ export default function Navbar() {
       >
         {/* Logo + Links */}
         <div className="flex items-center gap-6 lg:gap-8">
-          <div className="padam-logo" onClick={() => navigate('/')}>PADAM</div>
+          <div className="streamix-logo" onClick={() => navigate('/')}>Streamix</div>
 
           <ul className="hidden lg:flex items-center gap-5 text-sm">
             {NAV_LINKS.map(({ label, path }) => (
